@@ -3,16 +3,28 @@ const balanceManager = require('./balanceManager');
 const changeHandler = require('./changeHandler');
 const productInventory = require('./productInventory');
 
+const vendProduct = (productId) => {
+  const product = productInventory.getProduct(productId);
+  balanceManager.decreaseBalance(product.price);
+  return product;
+};
+
+const releaseChange = () => {
+  const currentBalance = balanceManager.getBalance();
+  balanceManager.decreaseBalance(currentBalance);
+  return changeHandler.convertToChange(currentBalance);
+};
+
+const insertCoin = (coinType) => {
+  const value = changeHandler.getAmount(coinType);
+  balanceManager.increaseBalance(value);
+};
+
+const getProducts = () => products;
+
 module.exports = {
-  insertCoin(coinType) {
-    const value = this.getAmount(coinType);
-    this.increaseBalance(value);
-  },
-
-  releaseChange() {
-    const currentBalance = this.getBalance();
-    this.decreaseBalance(currentBalance);
-    return this.convertToChange(currentBalance);
-  },
-
+  insertCoin,
+  releaseChange,
+  vendProduct,
+  getProducts,
 };

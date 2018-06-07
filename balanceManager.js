@@ -19,7 +19,7 @@ const canAfford = (amount) => {
 
 const decreaseBalance = (amount) => {
   let errorMessage;
-  if (!this.canAfford(amount)) {
+  if (!canAfford(amount)) {
     errorMessage = 'Insufficient balance';
   }
   if (errorMessage) {
