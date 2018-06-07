@@ -12,28 +12,6 @@ const products = [
 ];
 
 module.exports = {
-  getAmount: (coinType) => {
-    // COINS:
-    // [p]enny
-    // [n]ickel
-    // [d]ime
-    // [q]uarter
-    switch (coinType) {
-      case 'p': return 1;
-      case 'n': return 5;
-      case 'd': return 10;
-      case 'q': return 25;
-      default: throw new Error(`Unrecognized coin ${coinType}`);
-    }
-  },
-
-  isValidAmount: (amount) => {
-    if (amount === null) {
-      return false;
-    }
-    return true;
-  },
-
   getProducts() {
     return products;
   },
