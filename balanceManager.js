@@ -1,20 +1,23 @@
 let balance = 0;
 
+const isValidAmount = (amount) => {
+  if (amount === null || amount === undefined) {
+    return false;
+  }
+  return true;
+};
 const getBalance = () => balance;
 
 const canAfford = (amount) => {
-  if (!this.isValidAmount(amount)) {
+  let errorMessage;
+  if (!isValidAmount(amount)) {
     errorMessage = 'Invalid Input';
-  }
-  if (errorMessage) {
     throw new Error(errorMessage);
   }
   return amount <= balance;
 };
 
 const decreaseBalance = (amount) => {
-  // This method decreases the balance of the vending machine. If the balance amount is not
-  // enough to cover the purchase, the method throws an error.
   let errorMessage;
   if (!this.canAfford(amount)) {
     errorMessage = 'Insufficient balance';
@@ -36,4 +39,5 @@ module.exports = {
   balance,
   increaseBalance,
   getBalance,
+  isValidAmount,
 };
